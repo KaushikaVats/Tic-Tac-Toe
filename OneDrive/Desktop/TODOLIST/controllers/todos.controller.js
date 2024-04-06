@@ -28,3 +28,19 @@ exports.createTask = (req,res)=>{
     todos[task] = todos_object
   res.status(201).send(todos_object)
 }
+
+exports.updateTask = (req,res)=>{
+ toDo_task = req.params.task
+ if(todos[toDo_task]){
+    todos_obj = req.body
+    todos[toDo_task] = todos_obj
+    res.status(200).send(todos_obj)
+
+
+
+ }else{
+    return res.status(404).send({
+        message: "Task is not present"
+    })
+ }
+}
